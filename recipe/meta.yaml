@@ -5,22 +5,22 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/r/responder/responder-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/r/responder/responder-{{ version }}.tar.gz
   sha256: 23a8f4b0136f74c272d187eb888a16e0b3fe4434881abfb60efecb71d78f6934
 
 build:
   noarch: python
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . -vv
   entry_points:
     - responder = responder.cli:cli
 
 requirements:
   host:
-    - python >=3.6
+    - python {{ python_min }}
     - pip
   run:
-    - python >=3.6
+    - python >={{ python_min }}
     - aiofiles
     - apispec >=1.0.0b1
     - apistar
@@ -41,6 +41,8 @@ requirements:
     - whitenoise
 
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - responder
   commands:
