@@ -19,6 +19,7 @@ requirements:
   host:
     - python {{ python_min }}
     - pip
+    - setuptools
   run:
     - python >={{ python_min }}
     - aiofiles
@@ -50,7 +51,7 @@ test:
 
 about:
   home: https://github.com/taoufik07/responder
-  license: APACHE-2.0
+  license: Apache-2.0
   license_family: APACHE
   license_file: LICENSE
   summary: A familiar HTTP Service Framework for Python
